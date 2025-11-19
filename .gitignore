@@ -1,0 +1,31 @@
+# Node modules
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Large model folder
+backend/spacymodel/
+
+# Specific large model file (optional)
+backend/spacymodel/model-best/transformer/model
+
+# Environment files
+.env
+*.env
+
+# Python cache
+__pycache__/
+
+# Logs
+*.log
+
+# Build output
+dist/
+build/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Uploads or datasets
+backend/uploads/
