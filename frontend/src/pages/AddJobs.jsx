@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import { assets } from "../assets/assets";
 
 const AddJobs = () => {
-   const { searchText } = useContext(SearchContext);
+  const { searchText } = useContext(SearchContext);
   const [jobs, setJobs] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [newJob, setNewJob] = useState({

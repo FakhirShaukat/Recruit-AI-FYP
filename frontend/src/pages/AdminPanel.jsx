@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
+import { SearchContext } from "../contexts/SearchContext";
+// import { SearchContext } from "../contexts/SearchContext";
 
 const AdminPanel = () => {
   const [hrUsers, setHrUsers] = useState([]);
   const [resumes, setResumes] = useState([]);
+  const { searchUser, setSearchUser } = useContext(SearchContext);
+  // const { searchUser, setSearchUser } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,6 +70,15 @@ const AdminPanel = () => {
 
       <div className="admin-content ml-[200px] p-6 w-full">
         <h1 className="text-3xl font-bold mb-4 text-black">Admin Panel</h1>
+        <div className="border border-black p-2 mb-2 text-sm rounded-lg w-1/2 shadow-md">
+          <input
+            className="focus:outline-none w-full"
+            type="text"
+            placeholder="Search User"
+            value={searchUser}
+            onChange={(e) => setSearchUser(e.target.value)}
+          />
+        </div>
         <div className="panel-info w-full h-[80vh]">
           <div className="hr-accounts-detail border rounded-lg w-full h-auto p-2">
             <h1 className="text-md font-bold mb-2">HR Accounts</h1>
