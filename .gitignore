@@ -29,3 +29,6 @@ Thumbs.db
 
 # Uploads or datasets
 backend/uploads/
+
+#virtual environments
+backend/venv/
