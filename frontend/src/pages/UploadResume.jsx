@@ -21,37 +21,7 @@ const UploadResume = () => {
   const isMock = true;
 
   useEffect(() => {
-    if (isMock) {
-      const mockJob = {
-        _id: "dummy123",
-        title: "Senior Frontend Developer (ReactJS Expert)",
-        description:
-          "We are seeking an experienced Senior Frontend Developer to join our dynamic engineering team. The ideal candidate will be responsible for designing and implementing highly responsive web interfaces using ReactJS and modern frontend technologies. You will collaborate closely with UX designers, backend developers, and product managers to create seamless user experiences and scalable interfaces for enterprise-level applications. If you’re passionate about performance optimization, clean code, and modern UI frameworks, we’d love to have you on our team.",
 
-        skills:
-          "ReactJS, JavaScript (ES6+), TypeScript, TailwindCSS, Redux Toolkit, RESTful APIs, Git, Webpack, Figma, Responsive Design, Unit Testing (Jest)",
-
-        responsibilities: [
-          "Build and maintain scalable, responsive, and accessible user interfaces using ReactJS and TailwindCSS.",
-          "Collaborate with UX/UI designers to transform mockups into pixel-perfect implementations.",
-          "Optimize applications for maximum speed and scalability.",
-          "Integrate RESTful APIs and manage global state with Redux Toolkit.",
-          "Ensure high-quality code through unit testing and peer code reviews.",
-          "Work closely with backend developers to ensure smooth data flow and efficient APIs.",
-        ],
-
-        education:
-          "Bachelor's Degree in Software Engineering or Computer Science",
-        experience:
-          "Minimum 4-6 years of hands-on experience in frontend development",
-        location: "Karachi, Pakistan (Hybrid Work Model)",
-        benefits:
-          "Competitive salary, Health insurance, Annual bonuses, Paid time off, Hybrid working flexibility, Learning opportunities, and Professional certifications support.",
-      };
-
-      setJob(mockJob);
-      setLoading(false);
-    } else {
       const fetchJob = async () => {
         try {
           const res = await axios.get(
@@ -66,7 +36,7 @@ const UploadResume = () => {
       };
       fetchJob();
     }
-  }, [jobId]);
+  , [jobId]);
 
   // Handle form change
   const handleChange = (e) => {

@@ -14,14 +14,14 @@ const AdminPanel = () => {
         const token = localStorage.getItem("adminToken");
         if (!token) return;
 
-        // Fetch HR users
+        // ---- FETCH HR USERS ----
         const hrRes = await fetch("http://localhost:5000/api/admin/hrs", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const hrData = await hrRes.json();
-        setHrUsers(hrData);
+        setHrUsers(hrData || []);
 
-        // Fetch Resumes
+        // ---- FETCH RESUMES ----
         const resumeRes = await fetch(
           "http://localhost:5000/api/admin/resumes",
           {
@@ -29,7 +29,7 @@ const AdminPanel = () => {
           }
         );
         const resumeData = await resumeRes.json();
-        setResumes(resumeData);
+        setResumes(resumeData || []);
       } catch (err) {
         console.error("Error fetching admin data:", err);
       }
@@ -38,31 +38,66 @@ const AdminPanel = () => {
     fetchData();
   }, []);
 
-  // Filter HR users based on search input
-  const filteredHR = hrUsers.filter(
-    (user, index) =>
-      user.name.toLowerCase().includes(searchUser.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchUser.toLowerCase()) ||
-      (index + 1).toString().includes(searchUser)
-  );
+  // Safely default searchUser to ""
+  const search = searchUser?.toLowerCase() || "";
 
-  // Filter resumes based on search input
-  const filteredResumes = resumes.filter(
-    (res, index) =>
-      res.name.toLowerCase().includes(searchUser.toLowerCase()) ||
-      res.email.toLowerCase().includes(searchUser.toLowerCase()) ||
-      (res.jobTitle &&
-        res.jobTitle.toLowerCase().includes(searchUser.toLowerCase())) ||
-      (index + 1).toString().includes(searchUser)
-  );
+  // ---- HR Filtering ----
+  const filteredHR = hrUsers.filter((user, index) => {
+    const name = user.name || "";
+    const email = user.email || "";
+    return (
+      name.toLowerCase().includes(search) ||
+      email.toLowerCase().includes(search) ||
+      (index + 1).toString().includes(search)
+    );
+  });
+
+  // ---- Resume Filtering ----
+  const filteredResumes = resumes.filter((res, index) => {
+    const name = res.name || "";
+    const email = res.email || "";
+    const jobTitle = res.jobTitle || "";
+    return (
+      name.toLowerCase().includes(search) ||
+      email.toLowerCase().includes(search) ||
+      jobTitle.toLowerCase().includes(search) ||
+      (index + 1).toString().includes(search)
+    );
+  });
+
+  const deleteResume = async (id) => {
+    const token = localStorage.getItem("adminToken");
+    if (!token) return;
+
+    try {
+      const confirmDelete = window.confirm("Are you sure you want to delete this resume?");
+      if (!confirmDelete) return;
+
+      const res = await fetch(`http://localhost:5000/api/admin/resume/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        // Remove deleted resume from state
+        setResumes(resumes.filter((r) => r._id !== id));
+        alert("Resume deleted successfully!");
+      } else {
+        alert(data.message || "Failed to delete resume");
+      }
+    } catch (err) {
+      console.error("Error deleting resume:", err);
+      alert("Server error while deleting resume");
+    }
+  };
+
+
 
   return (
     <div className="admin-content flex bg-[#f3f4f6] min-h-screen">
       {/* Sidebar */}
-      <div
-        className="admin-sidebar w-[200px] h-screen fixed 
-      bg-gradient-to-b from-[#0a0f1c] via-[#0f1d3d] to-[#0a0f1c] shadow-lg"
-      >
+      <div className="admin-sidebar w-[200px] h-screen fixed bg-gradient-to-b from-[#0a0f1c] via-[#0f1d3d] to-[#0a0f1c] shadow-lg">
         <div className="flex items-center gap-2 p-3">
           <img src={assets.logo} className="w-12" alt="" />
           <h1 className="logo text-white text-xl font-bold">RecruitAI</h1>
@@ -78,15 +113,10 @@ const AdminPanel = () => {
         </div>
 
         <Link to="/">
-          <div className="px-3 text-white">
-            <button
-              className="flex p-2 rounded-lg text-sm bg-red-500 items-center 
-            gap-2 mt-[300px] hover:bg-red-400 w-full justify-center shadow-md"
-            >
-              <img className="w-4 invert" src={assets.logout} alt="" />
-              <span>Log Out</span>
-            </button>
-          </div>
+          <button className="flex p-2 rounded-lg text-sm bg-red-500 items-center gap-2 mt-[300px] hover:bg-red-400 w-full  justify-center shadow-md text-white">
+            <img className="w-4 invert" src={assets.logout} alt="" />
+            <span>Log Out</span>
+          </button>
         </Link>
       </div>
 
@@ -113,7 +143,7 @@ const AdminPanel = () => {
           </div>
         </div>
 
-        {/* Search Bar */}
+        {/* Search */}
         <div className="bg-white border p-3 mb-6 text-sm rounded-xl w-1/2 shadow-md flex items-center gap-3">
           <img src={assets.search} className="w-5 opacity-70" alt="search" />
           <input
@@ -125,125 +155,89 @@ const AdminPanel = () => {
           />
         </div>
 
-        <div className="panel-info w-full">
-          {/* HR Accounts Section */}
-          <div className="border bg-white rounded-xl w-full p-4 shadow-md mb-8">
-            <h1 className="text-lg font-bold mb-3 text-gray-700">
-              HR Accounts
-            </h1>
+        {/* HR Accounts */}
+        <div className="border bg-white rounded-xl w-full p-4 shadow-md mb-8">
+          <h1 className="text-lg font-bold mb-3 text-gray-700">HR Accounts</h1>
 
-            <table className="border w-full text-center rounded-lg overflow-hidden">
-              <thead className="bg-gray-100 text-sm">
-                <tr>
-                  <th className="border px-2 py-2">ID</th> {/* Added ID */}
-                  <th className="border px-2 py-2">Name</th>
-                  <th className="border px-2 py-2">Email</th>
-                  <th className="border px-2 py-2">Role</th>
-                  <th className="border px-2 py-2">Manage</th>
+          <table className="border w-full text-center rounded-lg overflow-hidden">
+            <thead className="bg-gray-100 text-sm">
+              <tr>
+                <th className="border px-2 py-2">ID</th>
+                <th className="border px-2 py-2">Name</th>
+                <th className="border px-2 py-2">Email</th>
+                <th className="border px-2 py-2">Role</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {filteredHR.map((user, index) => (
+                <tr key={user._id} className="text-sm hover:bg-gray-50 transition">
+                  <td className="border px-2 py-2">{index + 1}</td>
+                  <td className="border px-2 py-2">{user.name || "N/A"}</td>
+                  <td className="border px-2 py-2">{user.email || "N/A"}</td>
+                  <td className="border px-2 py-2">{user.role || "N/A"}</td>
                 </tr>
-              </thead>
+              ))}
 
-              <tbody>
-                {filteredHR.map(
-                  (
-                    user,
-                    index // Filtered
-                  ) => (
-                    <tr
-                      key={user._id}
-                      className="text-sm hover:bg-gray-50 transition"
-                    >
-                      <td className="border px-2 py-2">{index + 1}</td>
-                      <td className="border px-2 py-2">{user.name}</td>
-                      <td className="border px-2 py-2">{user.email}</td>
-                      <td className="border px-2 py-2">{user.role}</td>
-                      <td className="border px-2 py-2">
-                        <button className="bg-red-500 text-white text-xs px-3 py-1 rounded-full hover:bg-red-600 shadow-sm">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  )
-                )}
-
-                {filteredHR.length === 0 && (
-                  <tr>
-                    <td colSpan="5" className="border px-2 py-2">
-                      No HR users found
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Resume Section */}
-          <div className="border bg-white rounded-xl w-full p-4 shadow-md">
-            <h1 className="text-lg font-bold mb-3 text-gray-700">
-              Candidate Resumes
-            </h1>
-
-            <table className="border w-full text-center rounded-lg overflow-hidden">
-              <thead className="bg-gray-100 text-sm">
+              {filteredHR.length === 0 && (
                 <tr>
-                  <th className="border px-2 py-2">ID</th> {/* Added ID */}
-                  <th className="border px-2 py-2">Name</th>
-                  <th className="border px-2 py-2">Email</th>
-                  <th className="border px-2 py-2">Applied Job</th>
-                  <th className="border px-2 py-2">AI Score</th>
-                  <th className="border px-2 py-2">Resume</th>
-                  <th className="border px-2 py-2">Manage</th>
+                  <td colSpan="4" className="border px-2 py-2">
+                    No HR users found
+                  </td>
                 </tr>
-              </thead>
+              )}
+            </tbody>
+          </table>
+        </div>
 
-              <tbody>
-                {filteredResumes.map(
-                  (
-                    res,
-                    index // Filtered
-                  ) => (
-                    <tr
-                      key={res._id}
-                      className="text-sm hover:bg-gray-50 transition"
+        {/* Resumes */}
+        <div className="border bg-white rounded-xl w-full p-4 shadow-md">
+          <h1 className="text-lg font-bold mb-3 text-gray-700">
+            Candidate Resumes
+          </h1>
+
+          <table className="border w-full text-center rounded-lg overflow-hidden">
+            <thead className="bg-gray-100 text-sm">
+              <tr>
+                <th className="border px-2 py-2">ID</th>
+                <th className="border px-2 py-2">Name</th>
+                <th className="border px-2 py-2">Email</th>
+                <th className="border px-2 py-2">Applied Job</th>
+                <th className="border px-2 py-2">Resume</th>
+                <th className="border px-2 py-2">Modify</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {filteredResumes.map((res, index) => (
+                <tr key={res._id} className="text-sm hover:bg-gray-50 transition">
+                  <td className="border px-2 py-2">{index + 1}</td>
+                  <td className="border px-2 py-2">{res.name || "N/A"}</td>
+                  <td className="border px-2 py-2">{res.email || "N/A"}</td>
+                  <td className="border px-2 py-2">{res.jobTitle || "N/A"}</td>
+                  <td className="border px-2 py-2">
+                    <a
+                      href={res.resumeUrl || "#"}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-blue-600 underline hover:text-blue-800 text-sm"
                     >
-                      <td className="border px-2 py-2">{index + 1}</td>
-                      <td className="border px-2 py-2">{res.name}</td>
-                      <td className="border px-2 py-2">{res.email}</td>
-                      <td className="border px-2 py-2">
-                        {res.jobTitle || "N/A"}
-                      </td>
-                      <td className="border px-2 py-2">
-                        {res.aiScore || "Not processed"}
-                      </td>
-                      <td className="border px-2 py-2">
-                        <a
-                          href={res.resumeUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-blue-600 underline hover:text-blue-800"
-                        >
-                          View
-                        </a>
-                      </td>
-                      <td className="border px-2 py-2">
-                        <button className="bg-red-500 text-white text-xs px-3 py-1 rounded-full hover:bg-red-600 shadow-sm">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  )
-                )}
+                      View
+                    </a>
+                  </td>
+                  <td className="border"><button onClick={()=> deleteResume(res._id)} className=" bg-red-500 text-white px-2 py-1 rounded-full text-xs hover:bg-red-600">Delete</button></td>
+                </tr>
+              ))}
 
-                {filteredResumes.length === 0 && (
-                  <tr>
-                    <td colSpan="7" className="border px-2 py-2">
-                      No resumes found
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+              {filteredResumes.length === 0 && (
+                <tr>
+                  <td colSpan="6" className="border px-2 py-2">
+                    No resumes found
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { assets } from "../assets/assets";
 import Layout from "../components/Layout";
+import ModelLoader from "../components/ModelLoader";
 
 const ResumeScreening = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(false); // ✅ loader state
 
   // Toggle job expand/collapse
   const toggleJob = (index) => {
@@ -57,6 +59,32 @@ const ResumeScreening = () => {
 
     fetchJobsWithResumes();
   }, []);
+
+  const screenAllResumes = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("http://127.0.0.1:8000/run-pipeline");
+      const data = await response.json();
+
+      if (data.results) {
+        // Store results in localStorage (or context)
+        localStorage.setItem("screeningResults", JSON.stringify(data.results));
+
+        // Delay to show final loader state
+        setTimeout(() => {
+          setLoading(false);
+          navigate("/screening/completed"); // route to screening completed page
+        }, 1500);
+      } else {
+        setLoading(false);
+        alert("No results returned from the pipeline");
+      }
+    } catch (err) {
+      console.error("Error running pipeline:", err);
+      setLoading(false);
+      alert("Error running the resume screening pipeline");
+    }
+  };
 
   return (
     <Layout showSearch={false}>
@@ -127,7 +155,7 @@ const ResumeScreening = () => {
 
                       {/* Screen All Button */}
                       <div className="mt-3 flex justify-end">
-                        <button className="text-xs border px-3 py-1 rounded-xl bg-red-500 hover:bg-red-700 text-white">
+                        <button onClick={screenAllResumes} className="text-xs border px-3 py-1 rounded-xl bg-red-500 hover:bg-red-700 text-white">
                           Screen All
                         </button>
                       </div>
@@ -138,7 +166,9 @@ const ResumeScreening = () => {
             )}
           </div>
         </div>
-        
+
+        <ModelLoader show={loading} />
+
       </div>
     </Layout>
   );

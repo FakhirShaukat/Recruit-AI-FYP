@@ -1,24 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { assets } from '../assets/assets';
 import Layout from '../components/Layout';
 
-const candidates = [
-    { rank: 1, name: "Emma Watson", score: 98, scoreColor: "bg-blue-800" },
-    { rank: 2, name: "John Smith", score: 92, scoreColor: "bg-teal-500" },
-    { rank: 3, name: "Staisy Gray", score: 77, scoreColor: "bg-cyan-500" },
-    { rank: 4, name: "Emily Washington", score: 70, scoreColor: "bg-cyan-500" },
-    { rank: 5, name: "Dwayne Johnson", score: 68, scoreColor: "bg-orange-500" },
-];
+       const candidates = [
+            { rank: 1, name: "Emma Watson", score: 98, scoreColor: "bg-blue-800" },
+            { rank: 2, name: "John Smith", score: 92, scoreColor: "bg-teal-500" },
+            { rank: 3, name: "Staisy Gray", score: 77, scoreColor: "bg-cyan-500" },
+            { rank: 4, name: "Emily Washington", score: 70, scoreColor: "bg-cyan-500" },
+            { rank: 5, name: "Dwayne Johnson", score: 68, scoreColor: "bg-orange-500" },
+        ];
 
-const skillInsights = [
-    { skill: "Skills", percent: 40 },
-    { skill: "Education", percent: 30 },
-    { skill: "Experience", percent: 20 },
-];
+        const skillInsights = [
+            { skill: "Skills", percent: 40 },
+            { skill: "Education", percent: 30 },
+            { skill: "Experience", percent: 20 },
+        ];
+
 
 
 const Ranking = () => {
+    const [openRow, setOpenRow] = useState(false);
+
+    const toggleRow = (rank) => {
+        setOpenRow(openRow === rank ? null : rank);
+
+ 
+    };
     return (
         <Layout>
             <div className=' '>
@@ -76,36 +84,60 @@ const Ranking = () => {
                             </thead>
                             <tbody className='bg-white divide-y divide-gray-200'>
                                 {candidates.map((candidate) => (
-                                    <tr key={candidate.rank} className='hover:bg-gray-50'>
-                                        <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>#{candidate.rank}</td>
-                                        <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-700'>{candidate.name}</td>
+                                    <React.Fragment key={candidate.rank}>
+                                        {/* MAIN ROW */}
+                                        <tr className='hover:bg-gray-50'>
+                                            <td className='px-6 py-4'>{candidate.rank}</td>
+                                            <td className='px-6 py-4'>{candidate.name}</td>
 
-                                        <td className='px-6 py-4 whitespace-nowrap'>
-                                            <div className='flex items-center'>
-                                                <div className="w-24 bg-gray-200 rounded-full h-2 mr-2">
-                                                    <div
-                                                        className={`${candidate.scoreColor} h-2 rounded-full transition-all duration-500`}
-                                                        style={{ width: `${candidate.score}%` }}
-                                                    ></div>
+                                            <td className='px-6 py-4'>
+                                                <div className='flex items-center'>
+                                                    <div className="w-24 bg-gray-200 rounded-full h-2 mr-2">
+                                                        <div
+                                                            className={`${candidate.scoreColor} h-2 rounded-full transition-all duration-500`}
+                                                            style={{ width: `${candidate.score}%` }}
+                                                        ></div>
+                                                    </div>
+                                                    <span className='text-sm font-semibold'>{candidate.score}%</span>
                                                 </div>
-                                                <span className='text-sm font-semibold text-gray-800'>{candidate.score}%</span>
-                                            </div>
-                                        </td>
+                                            </td>
 
-                                        <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-500'>
-                                            <button title="View Resume" className=''>
-                                                Resume.pdf
-                                            </button>
-                                        </td>
+                                            <td className='px-6 py-4 text-gray-500'>Resume.pdf</td>
 
-                                        <td className='px-6 py-4 whitespace-nowrap text-center'>
-                                            <button className='text-white bg-green-500 hover:bg-green-600 py-1 px-3 rounded-full text-xs'>
-                                                View Details
-                                            </button>
-                                        </td>
-                                    </tr>
+                                            <td className='px-6 py-4 text-center'>
+                                                <button
+                                                    onClick={() => toggleRow(candidate.rank)}
+                                                    className='text-white bg-green-500 hover:bg-green-600 py-1 px-3 rounded-full text-xs'
+                                                >
+                                                    {openRow === candidate.rank ? "Collapse" : "View Details"}
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        {/* EXPANDABLE ROW */}
+                                        {openRow === candidate.rank && (
+                                            <tr>
+                                                <td colSpan="5" className='bg-gray-50 px-6 py-4'>
+                                                    <div
+                                                        className="transition-all duration-500 ease-in-out overflow-hidden"
+                                                    >
+                                                        <p className="text-gray-700 mb-2">
+                                                            <strong>Skills Match:</strong> strong match 93.4%
+                                                        </p>
+                                                        <p className="text-gray-700 mb-2">
+                                                            <strong>Education Match:</strong> Bachelor's / Master's found in relevant field
+                                                        </p>
+                                                        <p className="text-gray-700">
+                                                            <strong>Experience Match:</strong>  Experience match 1+ years
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </React.Fragment>
                                 ))}
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -113,7 +145,7 @@ const Ranking = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
                     <div className='bg-white p-6 rounded-xl shadow-md border border-gray-100'>
                         <h2 className='text-xl font-bold text-gray-800 mb-4 flex items-center'>
-                            <p>Key Insights</p> 
+                            <p>Key Insights</p>
                         </h2>
                         <div className="flex items-center">
                             <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center text-xs text-gray-500 mr-4">

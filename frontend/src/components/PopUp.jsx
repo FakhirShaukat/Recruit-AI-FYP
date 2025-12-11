@@ -17,7 +17,7 @@ const PopUp = ({ showPopup }) => {
     <div className="fixed top-14 right-10 z-50 ">
       <div className="text-lg rounded-lg flex bg-white shadow-md text-black p-4 w-[15rem] h-[280px] flex-col border-gray-200 border">
         <div className="user-initials w-full p-2 flex flex-col justify-center items-center">
-          <h1 className="rounded-full w-14 h-14 pt-3 text-center border bg-gradient-to-r from-[#433344] to-[#6b5b95] text-white">
+          <h1 className="rounded-full w-14 h-14 pt-3 text-center text-2xl border bg-[#0f1d3d] text-white">
             {user.initials}
           </h1>
           <p className="pt-1 text-[9px]">{user.email}</p>
