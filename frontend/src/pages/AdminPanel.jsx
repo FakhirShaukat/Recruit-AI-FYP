@@ -193,7 +193,7 @@ const AdminPanel = () => {
         {/* Resumes */}
         <div className="border bg-white rounded-xl w-full p-4 shadow-md">
           <h1 className="text-lg font-bold mb-3 text-gray-700">
-            Candidate Resumes
+            Candidate Applications
           </h1>
 
           <table className="border w-full text-center rounded-lg overflow-hidden">

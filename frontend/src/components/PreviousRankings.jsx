@@ -23,29 +23,22 @@ const PreviousRankings = () => {
       .then((data) => setResults(data))
       .catch((err) => console.error("Failed to fetch previous rankings:", err));
   }, []);
-  const handleRemoveCandidate = async (jobId, candidateName) => {
-  if (!window.confirm(`Are you sure you want to remove ${candidateName}?`)) return;
+ const handleRemoveRanking = async (jobId) => {
+  if (!window.confirm("Are you sure you want to delete this entire ranking?"))
+    return;
 
   try {
-    const res = await fetch(`http://localhost:8000/remove-candidate/${jobId}`, {
+    const res = await fetch(`http://localhost:8000/remove-ranking/${jobId}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ candidateName }),
     });
 
-    if (!res.ok) throw new Error("Failed to remove candidate");
+    if (!res.ok) throw new Error("Failed to remove ranking");
 
-    // Update frontend state
-    setResults(prevResults =>
-      prevResults.map(job =>
-        job._id === jobId
-          ? { ...job, resumes: job.resumes.filter(r => r.name !== candidateName) }
-          : job
-      )
-    );
+    // Update UI
+    setResults(prev => prev.filter(job => job._id !== jobId));
   } catch (err) {
     console.error(err);
-    alert("Error removing candidate");
+    alert("Error deleting ranking");
   }
 };
 
@@ -55,7 +48,7 @@ const PreviousRankings = () => {
   return (
     <Layout>
         <div>
-      <h1 className="text-2xl font-bold mb-4">Previous Ranking Results</h1>
+      <h1 className="text-3xl font-bold mb-4">Previous Ranking Results</h1>
 
       {results.map((job, jobIndex) => (
         <div key={jobIndex} className="mb-6 bg-white p-4 rounded-xl shadow-md border border-gray-100">
@@ -63,7 +56,7 @@ const PreviousRankings = () => {
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleJob(jobIndex)}
           >
-            <h2 className="text-xl font-light font-inter">{job.jobTitle}</h2>
+            <h2 className="text-md  font-inter">{job.jobTitle}</h2>
             <button className="text-sm text-blue-500">{openJob === jobIndex ? "Collapse" : "Expand"}</button>
           </div>
 
@@ -128,14 +121,18 @@ const PreviousRankings = () => {
                                 </div>
                               </td>
                             </tr>
+                            
                           )}
                         </React.Fragment>
                       );
                     })}
                     
                   </tbody>
-                </table>
 
+                </table>
+                    <div className="flex justify-end items-end mt-4">
+                    <button  onClick={() => handleRemoveRanking(job._id)} className="border p-2 text-xs rounded-lg bg-red-500 text-white">Remove</button>
+                  </div>
               </div>
             </>
           )}

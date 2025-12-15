@@ -35,11 +35,13 @@ import application from './application.png'
 import briefcase from './briefcase.png'
 import favourite from './favourite.png'
 import plus from './plus.png'
+import up from './up.png'
 
 
 
 
 export const assets = {
+    up,
     img1,
     img2,
     img3,
