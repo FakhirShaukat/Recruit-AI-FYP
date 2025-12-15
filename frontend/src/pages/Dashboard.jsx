@@ -81,19 +81,19 @@ const Dashboard = () => {
                     <div className="content w-[700px]">
                         <div className="cards flex justify-center gap-4">
 
-                            <div className="card border bg-gray-300 rounded-lg shadow-md w-[220px] p-2 px-4 h-[100px]">
-                                <h2 className="text-white mt-1 text-md">Total Jobs</h2>
+                            <div className=" card border bg-gray-300 rounded-lg shadow-md w-[220px] p-2 px-4 h-[100px]">
+                                <h2 className="text-white mt-1 text-md font-inter">Total Jobs</h2>
                                 <p className="text-4xl font-semibold">{jobsCount}</p>
                             </div>
 
                             <div className="card border bg-[#23559A] rounded-lg shadow-md p-2 px-4 w-[220px] h-[100px]">
-                                <h2 className="text-white mt-1 text-md ">Resume Screen</h2>
+                                <h2 className="text-white mt-1 text-md font-inter">Resume Screen</h2>
                                 <p className="text-white text-4xl font-semibold">0</p>
                             </div>
 
                             <div className="card border bg-[#4D5FE8] rounded-lg shadow-md p-2 px-4 w-[220px] h-[100px]">
 
-                                <h2 className="text-white mt-1 text-md ">Applications Today</h2>
+                                <h2 className="text-white mt-1 text-md font-inter ">Applications Today</h2>
                                 <p className="text-white text-4xl font-semibold">{resumeCount}</p>
 
                             </div>
@@ -101,15 +101,15 @@ const Dashboard = () => {
                         </div>
                         <div className="jobs-n-graph-section flex justify-center gap-3  mt-4">
                             <div className="myjobs w-[300px] border rounded-lg shadow-md p-2 bg-gray-200">
-                                <h1 className="font-semibold text-lg">My Jobs</h1>
-                                <p className="text-xs text-gray-400 mt-2">Active job posting</p>
+                                <h1 className="font-semibold text-lg font-inter">My Jobs</h1>
+                                <p className="text-xs text-gray-400 mt-2 ">Active job posting</p>
                                 <div className="jobs-list mt-2 border h-[220px] bg-white  rounded-lg relative ">
                                     <ul className="text-sm overflow-y-auto h-full pr-2">
                                         {myjobs.length === 0 ? (
                                             <li className="p-2 text-gray-500">No jobs yet!</li>
                                         ) : (
                                             myjobs.slice(0, 3).map((job) => (
-                                                <li key={job._id} className="border-b p-2">{job.title}</li>
+                                                <li key={job._id} className="border-b p-2 font-inter">{job.title}</li>
                                             ))
                                         )}
                                     </ul>
@@ -117,7 +117,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <div className="myjobs w-[380px] border rounded-lg shadow-md p-2 bg-gray-200">
-                                <h1 className="font-semibold text-lg">Evaluation Graph</h1>
+                                <h1 className="font-semibold text-lg font-inter">Evaluation Graph</h1>
                                 <p className="mt-2 text-xs text-gray-400 ">Weekly Progress</p>
                                 <div className="graph flex justify-center mt-2 items-center border rounded-lg h-[250px] bg-white">
                                     <p>Graph will be here</p>
@@ -130,7 +130,7 @@ const Dashboard = () => {
                     <div className="content border rounded-lg shadow-md bg-gray-200 w-[300px] h-[405px]">
                         <div className="heading flex justify-center items-center p-4 gap-2 ">
                             <img className="w-8" src={assets.quality} alt="" />
-                            <h1 className="text-center  text-lg font-semibold">Top Ranked Candidates</h1>
+                            <h1 className="text-center  text-lg font-semibold font-inter">Top Ranked Candidates</h1>
                         </div>
                         <div className="ranked-list border bg-white h-[310px] mx-2 rounded-lg p-4 ">
                             <ul className="w-full text-xl space-y-3">

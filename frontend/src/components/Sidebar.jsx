@@ -7,7 +7,7 @@ const Sidebar = () => {
     { label: "Dashboard", icons: assets.homeicon, path: "/dashboard" },
     { label: "Job Listings", icons: assets.list, path: "/addjobs" },
     { label: "Resume Screening", icons: assets.ai, path: "/screening" },
-    { label: "Ranked Candidates", icons: assets.rank, path: "/ranking" },
+    { label: "Ranked Candidates", icons: assets.rank, path: "/prevranking" },
   ];
 
   return (
@@ -16,7 +16,7 @@ const Sidebar = () => {
       <div className="flex-1 overflow-y-auto">
         <div className="logo flex items-center text-white p-4 gap-2 cursor-pointer">
           <img src={assets.logo} alt="RecruitAI Logo" className="w-8 h-9" />
-          <h1 className="text-xl font-bold">RecruitAI</h1>
+          <h1 className="text-xl font-bold font-montserrat ">RecruitAI</h1>
         </div>
 
         <div className="sidebar-navlinks space-y-4 mt-5">

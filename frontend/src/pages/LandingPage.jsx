@@ -39,11 +39,11 @@ const Main = () => {
       >
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 md:px-12 lg:px-16 gap-10">
           <div className="headings w-full md:w-1/2 space-y-6 text-center md:text-left">
-            <div className="animate-para inline-block text-white bg-[#0a0f1c]/70 border border-gray-700 shadow-lg px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm rounded-full animate-glow mt-2">
-              <p><b>IU</b> - Iqra University - Final Year Project</p>
+            <div className="font-inter animate-para inline-block text-white bg-[#0a0f1c]/70 border border-gray-700 shadow-lg px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm rounded-full animate-glow mt-2">
+              <p className="font-inter"><b>IU</b> - Iqra University - Final Year Project</p>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-snug tracking-tight">
+            <h1 className="text-2xl font-montserrat sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-snug tracking-tight">
               Transform your{" "}
               <span className="text-indigo-400 pb-2 whitespace-nowrap">
                 Hiring Process
@@ -53,7 +53,7 @@ const Main = () => {
               </span>
             </h1>
 
-            <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-md sm:max-w-lg mx-auto md:mx-0">
+            <p className="font-inter text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-md sm:max-w-lg mx-auto md:mx-0">
               Streamline your recruitment with our advanced AI system that
               parses resumes, screens them, and intelligently shortlists the
               perfect matches for your organization.
@@ -88,15 +88,15 @@ const Main = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-5 sm:space-y-6 md:space-y-8 text-center md:text-left">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white text-gradient animate-fadeIn">
+              <h2 className="font-montserrat text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white text-gradient animate-fadeIn">
                 About RecruitAI
               </h2>
-              <p className="text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed animate-fadeIn delay-100">
+              <p className="font-inter text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed animate-fadeIn delay-100">
                 RecruitAI helps organizations hire smarter and faster with
                 AI-driven parsing and ranking, reducing manual effort and
                 improving outcomes.
               </p>
-              <p className="text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed animate-fadeIn delay-200">
+              <p className="font-inter text-slate-300 text-base sm:text-lg md:text-xl leading-relaxed animate-fadeIn delay-200">
                 Focused on accuracy, speed, and fairness, RecruitAI streamlines
                 screening and supports better hiring decisions.
               </p>
@@ -130,10 +130,10 @@ const Main = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full text-center">
           {/* Section Heading */}
           <div className="space-y-4 mb-12 md:mb-16">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+            <h1 className="font-montserrat text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
               Why Choose RecruitAI?
             </h1>
-            <p className="pt-2 max-w-2xl mx-auto text-gray-300 text-sm sm:text-base md:text-lg">
+            <p className="font-inter pt-2 max-w-2xl mx-auto text-gray-300 text-sm sm:text-base md:text-lg">
               Our intelligent system combines AI technology with human expertise
               to deliver accurate candidate screening and ranking.
             </p>
@@ -195,10 +195,10 @@ const Main = () => {
       >
         <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10">
           <div className="flex flex-col justify-center text-white space-y-6">
-            <h2 className="text-4xl sm:text-5xl font-extrabold">
+            <h2 className="font-montserrat text-4xl sm:text-5xl font-extrabold">
               Get in Touch
             </h2>
-            <p className="text-gray-300 text-lg">
+            <p className="font-inter text-gray-300 text-lg">
               Have a question, idea, or collaboration in mind? Let’s connect and
               build something amazing together.
             </p>

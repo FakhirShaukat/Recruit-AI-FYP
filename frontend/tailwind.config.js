@@ -8,6 +8,9 @@ export default {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        playfair: ["Playfair+Display", "serif"],
       },
       backgroundImage: {
         'hero-pattern': "url('/src/assets/background.jpg')",

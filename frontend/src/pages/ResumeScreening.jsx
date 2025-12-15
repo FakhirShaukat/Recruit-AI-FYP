@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import Layout from "../components/Layout";
 import ModelLoader from "../components/ModelLoader";
@@ -6,20 +7,18 @@ import ModelLoader from "../components/ModelLoader";
 const ResumeScreening = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(false); // ✅ loader state
+  const [loading, setLoading] = useState(false); 
+  const navigate = useNavigate();
 
-  // Toggle job expand/collapse
   const toggleJob = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // ✅ Fetch jobs and their resumes
   useEffect(() => {
-    const token = localStorage.getItem("token"); // remove if not needed
+    const token = localStorage.getItem("token"); 
 
     const fetchJobsWithResumes = async () => {
       try {
-        // 1️⃣ Fetch all jobs
         const res = await fetch("http://localhost:5000/api/jobs", {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -27,7 +26,6 @@ const ResumeScreening = () => {
         if (!res.ok) throw new Error("Failed to fetch jobs");
         const jobsData = await res.json();
 
-        // 2️⃣ For each job, fetch its resumes
         const jobsWithResumes = await Promise.all(
           jobsData.map(async (job) => {
             try {
@@ -41,7 +39,7 @@ const ResumeScreening = () => {
                 title: job.title,
                 _id: job._id,
                 resumes: resumes.map((r) => ({
-                  file: r.resume.split("\\").pop(), // get filename
+                  file: r.resume.split("\\").pop(), 
                   id: r._id,
                 })),
               };
@@ -60,20 +58,17 @@ const ResumeScreening = () => {
     fetchJobsWithResumes();
   }, []);
 
-  const screenAllResumes = async () => {
+  const screenAllResumes = async (jobId) => {
     setLoading(true);
     try {
-      const response = await fetch("http://127.0.0.1:8000/run-pipeline");
+      const response = await fetch(`http://127.0.0.1:8000/run-pipeline/${jobId}`);
       const data = await response.json();
 
-      if (data.results) {
-        // Store results in localStorage (or context)
-        localStorage.setItem("screeningResults", JSON.stringify(data.results));
-
-        // Delay to show final loader state
+      if (data.resumes) {
+        localStorage.setItem("screeningResults", JSON.stringify(data.resumes));
         setTimeout(() => {
           setLoading(false);
-          navigate("/screening/completed"); // route to screening completed page
+         navigate(`/ranking/${jobId}`);
         }, 1500);
       } else {
         setLoading(false);
@@ -86,15 +81,16 @@ const ResumeScreening = () => {
     }
   };
 
+
   return (
     <Layout showSearch={false}>
       <div className="content  h-full">
         <div className="heading mb-4">
-          <h1 className="text-3xl font-bold">Resume Screening</h1>
+          <h1 className="text-3xl font-bold ">Resume Screening</h1>
         </div>
 
         <div className="applied-section  max-w-[80%]">
-          <h1 className="mb-2 p-1 pl-2 text-md bg-gradient-to-b text-white from-[#0a0f1c] via-[#0f1d3d] to-[#0a0f1c] border rounded-md">Applied Resumes</h1>
+          <h1 className="mb-2 font-inter p-1 pl-2 text-md bg-gradient-to-b text-white from-[#0a0f1c] via-[#0f1d3d] to-[#0a0f1c] border rounded-md">Applied Resumes</h1>
           <div className="jobs-section flex flex-col gap-2 ">
             {jobs.length === 0 ? (
               <p className="text-gray-500 text-sm ml-2">No jobs added yet.</p>
@@ -155,7 +151,7 @@ const ResumeScreening = () => {
 
                       {/* Screen All Button */}
                       <div className="mt-3 flex justify-end">
-                        <button onClick={screenAllResumes} className="text-xs border px-3 py-1 rounded-xl bg-red-500 hover:bg-red-700 text-white">
+                        <button onClick={() => screenAllResumes (job._id)} className="text-xs border px-3 py-1 rounded-xl bg-red-500 hover:bg-red-700 text-white">
                           Screen All
                         </button>
                       </div>

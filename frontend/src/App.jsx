@@ -11,6 +11,7 @@ import Ranking from './pages/Ranking';
 import AdminPanel from './pages/AdminPanel';
 import AdminLogin from './pages/AdminLogin';
 import UploadResume from './pages/UploadResume';
+import PreviousRankings from './components/PreviousRankings.jsx';
 
 function App() {
 
@@ -24,7 +25,8 @@ function App() {
         <Route path="/addjobs" element={<AddJobs />} />
         <Route path="/screening" element={<ResumeScreening />} />
         <Route path="/apply/:jobId" element={<UploadResume />} /> {/* 🔥 unique link */}
-        <Route path="/ranking" element={<Ranking />} />
+        <Route path="/ranking/:jobId" element={<Ranking />} />
+        <Route path="/prevranking" element={<PreviousRankings />} />
         <Route path="/uploadresume" element={<UploadResume />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/adminpanel" element={<AdminPanel />} />

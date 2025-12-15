@@ -184,15 +184,15 @@ const AddJobs = () => {
           filteredJobs.map((job, index) => (
             <div key={job._id} className="job border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
               <h3 className="font-normal text-lg border-b mb-4">{job.title}</h3>
-              <ul className="text-sm list-disc pl-5 space-y-1">
-                <li><strong>Description:</strong> {job.description}</li>
-                {job.requirements && <li><strong>Requirements:</strong> {job.requirements}</li>}
-                {job.skills && <li><strong>Skills:</strong> {job.skills}</li>}
-                {job.education && <li><strong>Education:</strong> {job.education}</li>}
-                {job.experience && <li><strong>Experience:</strong> {job.experience}</li>}
-                {job.salaryexpectation && <li><strong>Salary Expectation:</strong> {job.salaryexpectation}</li>}
-                {job.jobtype && <li><strong>Job Type:</strong> {job.jobtype}</li>}
-                {job.location && <li><strong>Location:</strong> {job.location}</li>}
+              <ul className="text-sm list-disc pl-5 space-y-1 w-[900px]">
+                <li><strong className="font-inter">Description:</strong> {job.description}</li>
+                {job.requirements && <li><strong className="font-inter">Requirements:</strong> {job.requirements}</li>}
+                {job.skills && <li><strong className="font-inter">Skills:</strong> {job.skills}</li>}
+                {job.education && <li><strong className="font-inter">Education:</strong> {job.education}</li>}
+                {job.experience && <li><strong className="font-inter">Experience:</strong> {job.experience}</li>}
+                {job.salaryexpectation && <li><strong className="font-inter">Salary Expectation:</strong> {job.salaryexpectation}</li>}
+                {job.jobtype && <li><strong className="font-inter">Job Type:</strong> {job.jobtype}</li>}
+                {job.location && <li><strong className="font-inter">Location:</strong> {job.location}</li>}
               </ul>
 
               <div className="mt-3 text-sm ">

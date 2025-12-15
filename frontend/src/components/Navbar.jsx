@@ -54,7 +54,7 @@ const Navbar = () => {
             alt="Main Logo"
             className="w-12 h-12 object-contain rounded-full "
           />
-          <h1 className="font-bold text-xl tracking-wide text-white">
+          <h1 className="font-montserrat font-bold text-xl tracking-wide text-white">
             RecruitAI
           </h1>
         </div>
