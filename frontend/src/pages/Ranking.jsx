@@ -17,6 +17,8 @@ const Ranking = () => {
     const [openRow, setOpenRow] = useState(null);
     const [loading, setLoading] = useState(true);
     const [jobTitle, setJobTitle] = useState();
+    const [modelConfidence, setModelConfidence] = useState(null);
+
 
     const toggleRow = (rank) => {
         setOpenRow(openRow === rank ? null : rank);
@@ -29,6 +31,7 @@ const Ranking = () => {
                 const data = await res.json();
 
                 setJobTitle(data.jobTitle || "Untitled Job");
+                setModelConfidence(data.model_confidence ?? null);
                 const sortedResumes = (data.resumes || []).sort((a, b) => {
                     const scoreA = parseFloat(a.match_score) || 0;
                     const scoreB = parseFloat(b.match_score) || 0;
@@ -210,7 +213,7 @@ const Ranking = () => {
                             Model Confidence Score
                         </h2>
                         <p className='text-6xl font-extrabold text-teal-500'>
-                            95%
+                            {modelConfidence !== null ? `${modelConfidence}%` : "--"}
                         </p>
                         <p className='text-sm text-gray-500 mt-2'>
                             The model's confidence in the ranking accuracy.
