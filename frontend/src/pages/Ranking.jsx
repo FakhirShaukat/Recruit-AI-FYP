@@ -158,7 +158,7 @@ const Ranking = () => {
                                                         <span className="text-sm font-semibold">{scorePercent}%</span>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 text-gray-500">Resume.pdf</td>
+                                                <td className="px-6 py-4 text-gray-500"><a href={`http://127.0.0.1:8000${r.resume_path}`}>Resume.pdf</a></td>
                                                 <td className="px-6 py-4 text-center">
                                                     <button
                                                         onClick={() => toggleRow(index)}

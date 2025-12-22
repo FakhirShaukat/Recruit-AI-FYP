@@ -58,8 +58,8 @@ const Layout = ({ children, showSearch }) => {
         {/* Top Navbar */}
         <div className="content-nav flex justify-between items-center p-3">
           {showSearch ? (
-            <div className="search bar flex p-2 justify-center items-center rounded-full border border-gray-300  ">
-              <input className="w-[500px]  text-sm bg-gray-100 focus:outline-none px-2 " type="text" placeholder="Search for jobs" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+            <div className="search bar bg-white flex p-2 justify-center items-center rounded-lg border border-gray-300  ">
+              <input className="w-[500px] bg-white text-sm bg-gray-100 focus:outline-none px-2 " type="text" placeholder="Search for jobs" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
               <button>
                 <img className="w-5 h-5" src={assets.search} alt="" />
               </button>

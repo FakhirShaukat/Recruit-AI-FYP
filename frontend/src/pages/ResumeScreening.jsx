@@ -90,7 +90,7 @@ const ResumeScreening = () => {
         </div>
 
         <div className="applied-section  max-w-[80%]">
-          <h1 className="mb-2 font-inter p-1 pl-2 text-md bg-gradient-to-b text-white from-[#0a0f1c] via-[#0f1d3d] to-[#0a0f1c] border rounded-md">Applied Resumes</h1>
+          <h1 className="mb-2 font-inter p-1 pl-2 text-md bg-gradient-to-b shadow-md text-white from-[#0a0f1c] via-[#0f1d3d] to-[#0a0f1c]  rounded-md">Applied Resumes</h1>
           <div className="jobs-section flex flex-col gap-2 ">
             {jobs.length === 0 ? (
               <p className="text-gray-500 text-sm ml-2">No jobs added yet.</p>
@@ -98,14 +98,14 @@ const ResumeScreening = () => {
               jobs.map((job, index) => (
                 <div
                   key={index}
-                  className="job border rounded-lg h-auto flex flex-col p-2 shadow-md"
+                  className="job border bg-white border-gray-300 rounded-md h-auto flex flex-col p-2 "
                 >
                   {/* Job Header */}
                   <div
-                    className="job-header flex justify-between items-center cursor-pointer"
+                    className="job-header flex justify-between  items-center cursor-pointer"
                     onClick={() => toggleJob(index)}
                   >
-                    <h2 className="">{job.title}</h2>
+                    <h2 className="font-inter">{job.title}</h2>
                     <img
                       className={`w-6 transition-transform duration-300 ${openIndex === index ? "rotate-180" : "rotate-0"
                         }`}

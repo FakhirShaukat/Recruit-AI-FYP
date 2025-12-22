@@ -182,7 +182,7 @@ const AddJobs = () => {
         {/* Jobs Listing */}
         {filteredJobs.length > 0 ? (
           filteredJobs.map((job, index) => (
-            <div key={job._id} className="job border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
+            <div key={job._id} className="job border border-gray-300 mb-4 bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
               <h3 className="font-normal text-lg border-b mb-4">{job.title}</h3>
               <ul className="text-sm list-disc pl-5 space-y-1 w-[900px]">
                 <li><strong className="font-inter">Description:</strong> {job.description}</li>

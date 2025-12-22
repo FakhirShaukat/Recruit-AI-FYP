@@ -132,12 +132,6 @@ const Dashboard = () => {
         fetchRankingScores();
     }, []);
 
-    if (loading) {
-        return <PageLoader />;
-    }
-
-
-
     return (
         <Layout showSearch={false}>
             <div className="dashboard-content  ">
@@ -146,7 +140,7 @@ const Dashboard = () => {
                     <div className="content w-[700px]">
                         <div className="cards flex justify-center gap-4">
 
-                            <div className=" card border bg-white rounded-md  w-[220px] p-2 px-4 h-[110px]">
+                            <div className=" card border bg-white rounded-md border-gray-300  w-[220px] p-2 px-4 h-[110px]">
                                 <div className="flex justify-between items-center">
                                     <h2 className=" mt-2 text-sm font-inter ">Total Jobs</h2>
                                     <img className="border rounded-full w-9 p-1" src={assets.arrow2} alt="" />
@@ -154,7 +148,7 @@ const Dashboard = () => {
                                 <p className="text-4xl pt-2  font-semibold">{jobsCount}</p>
                             </div>
 
-                            <div className="card border bg-white rounded-md  p-2 px-4 w-[220px] h-[110px]">
+                            <div className="card border bg-white rounded-md border-gray-300   p-2 px-4 w-[220px] h-[110px]">
                                 <div className="flex justify-between items-center">
                                     <h2 className=" mt-2 text-sm font-inter ">Resume Screen</h2>
                                     <img className="border rounded-full w-9 p-1" src={assets.arrow2} alt="" />
@@ -162,7 +156,7 @@ const Dashboard = () => {
                                 <p className=" text-4xl pt-2  font-semibold">{screened}</p>
                             </div>
 
-                            <div className="card border flex flex-col bg-white rounded-md p-2 px-4 w-[220px] h-[110px]">
+                            <div className="card border flex flex-col bg-white border-gray-300  rounded-md p-2 px-4 w-[220px] h-[110px]">
                                 <div className="flex justify-between items-center">
                                     <h2 className=" mt-2 text-sm font-inter ">Applications Today</h2>
                                     <img className="border rounded-full w-9 p-1" src={assets.arrow2} alt="" />
@@ -171,7 +165,7 @@ const Dashboard = () => {
                             </div>
 
                         </div>
-                        <div className="evaluation-graph w-full border h-[350px] bg-white rounded-md mt-2">
+                        <div className="evaluation-graph w-full  border h-[350px] bg-white rounded-md mt-2">
                             <div className="flex items-center p-2 gap-2 border w-full bg-gradient-to-b text-white from-[#0a0f1c] via-[#0f1d3d] to-[#0a0f1c] rounded-t-md">
                                 <h1 className="text-md font-semibold ">Evaluation Graph</h1>
                                 <img className="w-6" src={assets.up} alt="" />
@@ -186,7 +180,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="ranked-cand w-full h-full h-auto ">
-                        <div className="bg-white rounded-md p-4">
+                        <div className="bg-white rounded-md p-4 border border-gray-300 ">
                             <div className="flex justify-center items-center gap-2 pb-2">
                                 <img className="w-8" src={assets.quality} alt="trophy" />
                                 <h2 className="text-lg font-semibold mb-2">Top Ranked Candidates</h2>
@@ -208,7 +202,7 @@ const Dashboard = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="jobs-section mt-2 h-auto  bg-white rounded-lg">
+                        <div className="jobs-section mt-2 h-auto  bg-white rounded-md border border-gray-300">
                             <h1 className="p-2 font-inter  bg-gradient-to-b text-white from-[#0a0f1c] via-[#0f1d3d] to-[#0a0f1c] rounded-t-md">Recent Jobs</h1>
                             <div className="jobs-list mt-2">
                                 <ul className="text-sm overflow-y-auto h-full pr-2">

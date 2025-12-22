@@ -24,7 +24,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/addjobs" element={<AddJobs />} />
         <Route path="/screening" element={<ResumeScreening />} />
-        <Route path="/apply/:jobId" element={<UploadResume />} /> {/* 🔥 unique link */}
+        <Route path="/apply/:jobId" element={<UploadResume />} /> {/*  unique link */}
         <Route path="/ranking/:jobId" element={<Ranking />} />
         <Route path="/prevranking" element={<PreviousRankings />} />
         <Route path="/uploadresume" element={<UploadResume />} />

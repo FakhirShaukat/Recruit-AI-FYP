@@ -51,7 +51,7 @@ const PreviousRankings = () => {
       <h1 className="text-3xl font-bold mb-4">Previous Ranking Results</h1>
 
       {results.map((job, jobIndex) => (
-        <div key={jobIndex} className="mb-6 bg-white p-4 rounded-xl shadow-md border border-gray-100">
+        <div key={jobIndex} className="mb-2 bg-white p-2 w-full max-w-[80%] rounded-md  border border-gray-300">
           <div
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleJob(jobIndex)}
