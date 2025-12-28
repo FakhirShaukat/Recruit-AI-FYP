@@ -73,10 +73,13 @@ const AdminPanel = () => {
       const confirmDelete = window.confirm("Are you sure you want to delete this resume?");
       if (!confirmDelete) return;
 
-      const res = await fetch(`http://localhost:5000/api/admin/resume/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `http://localhost:5000/api/candidate/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
 
       const data = await res.json();
       if (res.ok) {
@@ -225,7 +228,7 @@ const AdminPanel = () => {
                       View
                     </a>
                   </td>
-                  <td className="border"><button onClick={()=> deleteResume(res._id)} className=" bg-red-500 text-white px-2 py-1 rounded-full text-xs hover:bg-red-600">Delete</button></td>
+                  <td className="border"><button onClick={() => deleteResume(res._id)} className=" bg-red-500 text-white px-2 py-1 rounded-full text-xs hover:bg-red-600">Delete</button></td>
                 </tr>
               ))}
 

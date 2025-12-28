@@ -1,4 +1,6 @@
 import express from "express";
+import fs from "fs";
+import path from "path";
 import multer from "multer";
 import Candidate from "../model/Candidates.js";
 import Job from "../model/Job.js";
@@ -82,6 +84,35 @@ router.get("/count/:hrEmail", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+
+// Delete candidate + resume
+router.delete("/:id", async (req, res) => {
+  try {
+    const candidate = await Candidate.findById(req.params.id);
+
+    if (!candidate) {
+      return res.status(404).json({ message: "Candidate not found" });
+    }
+
+    // 🛡 Safe resume file deletion
+    if (candidate.resume) {
+      const filePath = path.normalize(candidate.resume);
+
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+    }
+
+    await Candidate.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({ message: "Candidate deleted successfully" });
+  } catch (error) {
+    console.error("DELETE CANDIDATE ERROR:", error);
+    res.status(500).json({ message: "Server error while deleting candidate" });
+  }
+});
+
 
 
 

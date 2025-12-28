@@ -36,11 +36,16 @@ import briefcase from './briefcase.png'
 import favourite from './favourite.png'
 import plus from './plus.png'
 import up from './up.png'
+import download from './download.png'
+import sheets from './sheets.png'
+
 
 
 
 
 export const assets = {
+    sheets,
+    download,
     up,
     img1,
     img2,

@@ -108,7 +108,7 @@ const LoginPage = () => {
 
       google.accounts.id.renderButton(container, {
         type: "standard",
-        theme: "filled_white",
+        theme: "outline",
         size: "large",
         text: "continue_with",
         shape: "pill",
@@ -139,7 +139,7 @@ const LoginPage = () => {
       </div>
 
       <div className="form relative z-10 grid min-h-screen place-items-center px-4">
-        <div className="form-content w-full max-w-[380px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl flex flex-col items-center p-6 md:p-8">
+        <div className="form-content w-full max-w-[380px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-lg flex flex-col items-center p-6 md:p-8">
           <h1 className="text-center mt-1 text-[34px] md:text-[40px] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-white to-indigo-200">
             Login
           </h1>

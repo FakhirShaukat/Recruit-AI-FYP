@@ -48,6 +48,27 @@ const Ranking = () => {
         fetchResults();
     }, [jobId]);
 
+    const handleExportExcel = async () => {
+        try {
+            const res = await fetch(`http://127.0.0.1:8000/download-ranking-excel/${jobId}`);
+            if (!res.ok) throw new Error("Failed to download Excel");
+
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `ranking_${jobId}.xlsx`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        } catch (err) {
+            console.error("Error exporting Excel:", err);
+        }
+    };
+
+
 
     if (loading) return <ModelLoader show={true} />;
 
@@ -106,11 +127,20 @@ const Ranking = () => {
                 {/* Ranking Table */}
                 <div className='bg-white p-2 rounded-xl shadow-md border border-gray-100'>
                     <div className='mb-4 border-b pb-4'>
-                        <div className='flex items-center'>
-                            <img src={assets.favourite} className='w-6 mr-2' alt="" />
-                            <h2 className='text-xl font-bold text-gray-800'>
-                                Top Candidate Rankings
-                            </h2>
+                        <div className='flex justify-between items-center'>
+                            <div className='flex items-center'>
+                                <img src={assets.favourite} className='w-6 mr-2' alt="" />
+                                <h2 className='text-xl font-bold text-gray-800'>
+                                    Top Candidate Rankings
+                                </h2>
+                            </div>
+                            <div>
+                                <button onClick={handleExportExcel} className='border text-xs bg-green-500 p-2 rounded-lg text-white flex gap-1'>
+                                    Export
+                                    <img className='w-4' src={assets.sheets} alt="" />
+                                </button>
+                            </div>
+
                         </div>
                     </div>
 
