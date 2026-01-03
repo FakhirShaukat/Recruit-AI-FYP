@@ -78,7 +78,8 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchRankingScores = async () => {
             try {
-                const res = await fetch("http://localhost:8000/previous-rankings");
+                const userEmail = localStorage.getItem("userEmail")
+                const res = await fetch(`http://localhost:8000/previous-rankings?userEmail=${userEmail}`);
                 const data = await res.json();
 
                 const scores = [];

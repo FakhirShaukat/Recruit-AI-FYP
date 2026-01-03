@@ -26,8 +26,9 @@ const Ranking = () => {
 
     useEffect(() => {
         const fetchResults = async () => {
+                const userEmail = localStorage.getItem("userEmail");
             try {
-                const res = await fetch(`http://127.0.0.1:8000/matching-results/${jobId}`);
+                const res = await fetch(`http://127.0.0.1:8000/matching-results/${jobId}?userEmail=${userEmail}`);
                 const data = await res.json();
 
                 setJobTitle(data.jobTitle || "Untitled Job");

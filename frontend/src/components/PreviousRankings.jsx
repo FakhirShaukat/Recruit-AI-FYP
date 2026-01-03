@@ -3,6 +3,7 @@ import { assets } from "../assets/assets.js";
 import Layout from "./Layout.jsx";
 
 const PreviousRankings = () => {
+
   const [results, setResults] = useState([]); // Array of job results
   const [openJob, setOpenJob] = useState(null); // Track expanded job
   const [openRow, setOpenRow] = useState(null); // Track expanded candidate row
@@ -17,18 +18,21 @@ const PreviousRankings = () => {
   };
 
   // Fetch previous rankings from backend
-  useEffect(() => {
-    fetch("http://localhost:8000/previous-rankings")
-      .then((res) => res.json())
-      .then((data) => setResults(data))
-      .catch((err) => console.error("Failed to fetch previous rankings:", err));
-  }, []);
+useEffect(() => {
+  const userEmail = localStorage.getItem("userEmail");
+  fetch(`http://localhost:8000/previous-rankings?userEmail=${userEmail}`)
+    .then(res => res.json())
+    .then(data => setResults(data))
+    .catch(err => console.error(err));
+}, []);
+
  const handleRemoveRanking = async (jobId) => {
+  const userEmail = localStorage.getItem("userEmail"); // <-- add this
   if (!window.confirm("Are you sure you want to delete this entire ranking?"))
     return;
 
   try {
-    const res = await fetch(`http://localhost:8000/remove-ranking/${jobId}`, {
+    const res = await fetch(`http://localhost:8000/remove-ranking/${jobId}?userEmail=${userEmail}`, {
       method: "DELETE",
     });
 

@@ -78,6 +78,8 @@ const LoginPage = () => {
         if (res.ok) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token); // Save token for API calls
+          localStorage.setItem("userEmail", data.user.email); // user email stored with each login
+
           alert(`Welcome ${data.user.name}`);
           navigate("/dashboard");
         } else {
