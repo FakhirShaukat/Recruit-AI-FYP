@@ -26,7 +26,7 @@ const Ranking = () => {
 
     useEffect(() => {
         const fetchResults = async () => {
-                const userEmail = localStorage.getItem("userEmail");
+            const userEmail = localStorage.getItem("userEmail");
             try {
                 const res = await fetch(`http://127.0.0.1:8000/matching-results/${jobId}?userEmail=${userEmail}`);
                 const data = await res.json();
@@ -49,27 +49,31 @@ const Ranking = () => {
         fetchResults();
     }, [jobId]);
 
-    const handleExportExcel = async () => {
+    const handleExportExcel = async (jobId) => {
         try {
-            const res = await fetch(`http://127.0.0.1:8000/download-ranking-excel/${jobId}`);
-            if (!res.ok) throw new Error("Failed to download Excel");
+            const userEmail = localStorage.getItem("userEmail");
+
+            const res = await fetch(
+                `http://127.0.0.1:8000/download-ranking-excel/${jobId}?userEmail=${userEmail}`
+            );
+
+            if (!res.ok) throw new Error("Excel download failed");
 
             const blob = await res.blob();
             const url = window.URL.createObjectURL(blob);
 
             const a = document.createElement("a");
             a.href = url;
-            a.download = `ranking_${jobId}.xlsx`;
+            a.download = "ranking_results.xlsx";
             document.body.appendChild(a);
             a.click();
             a.remove();
+
             window.URL.revokeObjectURL(url);
         } catch (err) {
             console.error("Error exporting Excel:", err);
         }
     };
-
-
 
     if (loading) return <ModelLoader show={true} />;
 

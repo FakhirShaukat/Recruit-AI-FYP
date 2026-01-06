@@ -4,9 +4,9 @@ import Layout from "./Layout.jsx";
 
 const PreviousRankings = () => {
 
-  const [results, setResults] = useState([]); // Array of job results
-  const [openJob, setOpenJob] = useState(null); // Track expanded job
-  const [openRow, setOpenRow] = useState(null); // Track expanded candidate row
+  const [results, setResults] = useState([]); 
+  const [openJob, setOpenJob] = useState(null); 
+  const [openRow, setOpenRow] = useState(null); 
 
   const toggleJob = (index) => {
     setOpenJob(openJob === index ? null : index);
