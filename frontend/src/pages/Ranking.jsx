@@ -1,16 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { assets } from '../assets/assets';
 import Layout from '../components/Layout';
 import ModelLoader from "../components/ModelLoader";
 
 
-const skillInsights = [
-    { skill: "Skills", percent: 40 },
-    { skill: "Education", percent: 30 },
-    { skill: "Experience", percent: 20 },
-];
 const Ranking = () => {
     const { jobId } = useParams();
     const [results, setResults] = useState([]);
@@ -18,10 +13,15 @@ const Ranking = () => {
     const [loading, setLoading] = useState(true);
     const [jobTitle, setJobTitle] = useState();
     const [modelConfidence, setModelConfidence] = useState(null);
+    const navigate = useNavigate();
 
 
     const toggleRow = (rank) => {
         setOpenRow(openRow === rank ? null : rank);
+    };
+
+    const handleShortlist = () => {
+        navigate(`/shortlist/${jobId}`);
     };
 
     useEffect(() => {
@@ -49,31 +49,6 @@ const Ranking = () => {
         fetchResults();
     }, [jobId]);
 
-    const handleExportExcel = async (jobId) => {
-        try {
-            const userEmail = localStorage.getItem("userEmail");
-
-            const res = await fetch(
-                `http://127.0.0.1:8000/download-ranking-excel/${jobId}?userEmail=${userEmail}`
-            );
-
-            if (!res.ok) throw new Error("Excel download failed");
-
-            const blob = await res.blob();
-            const url = window.URL.createObjectURL(blob);
-
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "ranking_results.xlsx";
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-
-            window.URL.revokeObjectURL(url);
-        } catch (err) {
-            console.error("Error exporting Excel:", err);
-        }
-    };
 
     if (loading) return <ModelLoader show={true} />;
 
@@ -131,19 +106,13 @@ const Ranking = () => {
 
                 {/* Ranking Table */}
                 <div className='bg-white p-2 rounded-xl shadow-md border border-gray-100'>
-                    <div className='mb-4 border-b pb-4'>
+                    <div className='mb-2 border-b pb-2'>
                         <div className='flex justify-between items-center'>
                             <div className='flex items-center'>
                                 <img src={assets.favourite} className='w-6 mr-2' alt="" />
                                 <h2 className='text-xl font-bold text-gray-800'>
                                     Top Candidate Rankings
                                 </h2>
-                            </div>
-                            <div>
-                                <button onClick={handleExportExcel} className='border text-xs bg-green-500 p-2 rounded-lg text-white flex gap-1'>
-                                    Export
-                                    <img className='w-4' src={assets.sheets} alt="" />
-                                </button>
                             </div>
 
                         </div>
@@ -161,9 +130,6 @@ const Ranking = () => {
                                     </th>
                                     <th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>
                                         Match Score
-                                    </th>
-                                    <th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>
-                                        Resume
                                     </th>
                                     <th className='px-6 py-3 text-center text-xs font-medium uppercase tracking-wider'>
                                         Action
@@ -193,7 +159,6 @@ const Ranking = () => {
                                                         <span className="text-sm font-semibold">{scorePercent}%</span>
                                                     </div>
                                                 </td>
-                                                <td className="px-6 py-4 text-gray-500"><a href={`http://127.0.0.1:8000${r.resume_path}`}>Resume.pdf</a></td>
                                                 <td className="px-6 py-4 text-center">
                                                     <button
                                                         onClick={() => toggleRow(index)}
@@ -225,24 +190,7 @@ const Ranking = () => {
                 </div>
 
                 {/* Insights */}
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
-                    <div className='bg-white p-6 rounded-xl shadow-md border border-gray-100'>
-                        <h2 className='text-xl font-bold text-gray-800 mb-4'>
-                            Key Insights
-                        </h2>
-
-                        <ul className='space-y-1 text-sm'>
-                            {skillInsights.map((item, index) => (
-                                <li key={index} className='flex justify-between'>
-                                    <span className='font-medium'>{item.skill}:</span>
-                                    <span className='text-blue-600 font-semibold ml-2'>
-                                        {item.percent}%
-                                    </span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
+                <div className=' mt-6'>
                     <div className='bg-white p-6 rounded-xl shadow-md border border-gray-100 text-center'>
                         <h2 className='text-xl font-bold text-gray-800 mb-2'>
                             Model Confidence Score
@@ -253,6 +201,9 @@ const Ranking = () => {
                         <p className='text-sm text-gray-500 mt-2'>
                             The model's confidence in the ranking accuracy.
                         </p>
+
+                        <button onClick={handleShortlist} className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 mt-4 rounded-full text-sm font-semibold"
+                        >Get Shortlisted Candidates</button>
                     </div>
                 </div>
 

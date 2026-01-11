@@ -12,6 +12,7 @@ import AdminPanel from './pages/AdminPanel';
 import AdminLogin from './pages/AdminLogin';
 import UploadResume from './pages/UploadResume';
 import PreviousRankings from './components/PreviousRankings.jsx';
+import ShortlistedCand from './pages/ShortlistedCand.jsx';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/screening" element={<ResumeScreening />} />
         <Route path="/apply/:jobId" element={<UploadResume />} /> {/*  unique link */}
         <Route path="/ranking/:jobId" element={<Ranking />} />
+        <Route path="/shortlist/:jobId" element={<ShortlistedCand />} />
         <Route path="/prevranking" element={<PreviousRankings />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/adminpanel" element={<AdminPanel />} />
