@@ -12,52 +12,52 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  const checkUser = () => {
-    if (username === "admin" && password === "admin123") {
-      navigate("/dashboard");
-    } else {
-      setError(true);
-    }
-  };
-
-  //     // Manual login
-  // const checkUser = async () => {
-  //   try {
-  //     const res = await fetch("http://localhost:5000/api/auth/login", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({
-  //         name: username,
-  //         email: `${username}@company.com`,
-  //       }),
-  //     });
-
-  //     const data = await res.json();
-
-  //     if (res.ok) {
-  //       localStorage.setItem("user", JSON.stringify(data.user));
-  //       localStorage.setItem("token", data.token);
-  //       alert("Login successful!");
-  //       navigate("/dashboard");
-  //     } else {
-  //       alert(data.error || "Login failed");
-  //     }
-  //   } catch (err) {
-  //     console.error("Manual login error:", err);
-  //     alert("Server error");
+  // const checkUser = () => {
+  //   if (username === "user" && password === "user123") {
+  //     navigate("/dashboard");
+  //   } else {
+  //     setError(true);
   //   }
   // };
-  //     // Initials helpers
-  //     const getInitialsFromName = (name) => {
-  //         if (!name) return "";
-  //         const parts = name.split(" ");
-  //         return parts.map(word => word[0].toUpperCase()).join("").slice(0, 2);
-  //     };
 
-  //     const getInitialsFromEmail = (email) => {
-  //         if (!email) return "";
-  //         return email.charAt(0).toUpperCase();
-  //     };
+  // Manual login
+  const checkUser = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: username,
+          email: `${username}@company.com`,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
+        alert("Login successful!");
+        navigate("/dashboard");
+      } else {
+        alert(data.error || "Login failed");
+      }
+    } catch (err) {
+      console.error("Manual login error:", err);
+      alert("Server error");
+    }
+  };
+  // Initials helpers
+  const getInitialsFromName = (name) => {
+    if (!name) return "";
+    const parts = name.split(" ");
+    return parts.map(word => word[0].toUpperCase()).join("").slice(0, 2);
+  };
+
+  const getInitialsFromEmail = (email) => {
+    if (!email) return "";
+    return email.charAt(0).toUpperCase();
+  };
 
   // Google Sign-In
   useEffect(() => {
@@ -170,11 +170,10 @@ const LoginPage = () => {
               </span>
               <input
                 className={`w-full pl-11 pr-4 py-2.5 rounded-xl border text-white placeholder:text-slate-300/70 focus:outline-none focus:ring-2 transition 
-      ${
-        error
-          ? "bg-red-500/10 border-red-400 placeholder:text-red-400 focus:ring-red-400"
-          : "bg-white/10 border-white/20 focus:ring-indigo-400/60 focus:border-transparent"
-      }`}
+      ${error
+                    ? "bg-red-500/10 border-red-400 placeholder:text-red-400 focus:ring-red-400"
+                    : "bg-white/10 border-white/20 focus:ring-indigo-400/60 focus:border-transparent"
+                  }`}
                 type="text"
                 placeholder="Enter username"
                 onChange={(e) => setUsername(e.target.value)}
@@ -200,11 +199,10 @@ const LoginPage = () => {
               </span>
               <input
                 className={`w-full pl-11 pr-4 py-2.5 rounded-xl border text-white placeholder:text-slate-300/70 focus:outline-none focus:ring-2 transition 
-      ${
-        error
-          ? "bg-red-500/10 border-red-400 placeholder:text-red-400 focus:ring-red-400"
-          : "bg-white/10 border-white/20 focus:ring-indigo-400/60 focus:border-transparent"
-      }`}
+      ${error
+                    ? "bg-red-500/10 border-red-400 placeholder:text-red-400 focus:ring-red-400"
+                    : "bg-white/10 border-white/20 focus:ring-indigo-400/60 focus:border-transparent"
+                  }`}
                 type="password"
                 placeholder="Enter password"
                 onChange={(e) => setPassword(e.target.value)}

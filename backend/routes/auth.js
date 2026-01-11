@@ -60,46 +60,46 @@ router.post("/google", async (req, res) => {
   }
 });
 
-// Manual Login
-// router.post("/login", async (req, res) => {
-//   try {
-//     console.log("/login route hit, body:", req.body);
+//Manual Login
+router.post("/login", async (req, res) => {
+  try {
+    console.log("/login route hit, body:", req.body);
 
-//     const { name, email } = req.body;
+    const { name, email } = req.body;
 
-//     // Check if user already exists
-//     let user = await User.findOne({ email });
+    // Check if user already exists
+    let user = await User.findOne({ email });
 
-//     if (!user) {
-//       // Create new user
-//       user = new User({ name, email, role: "hr" });
-//       await user.save();
-//       console.log("New manual user saved:", user.email);
-//     } else {
-//       console.log("Manual login, user already exists:", user.email);
-//     }
+    if (!user) {
+      // Create new user
+      user = new User({ name, email, role: "hr" });
+      await user.save();
+      console.log("New manual user saved:", user.email);
+    } else {
+      console.log("Manual login, user already exists:", user.email);
+    }
 
-//     // Generate JWT
-//     const appToken = jwt.sign(
-//       { email: user.email, name: user.name },
-//       process.env.JWT_SECRET,
-//       { expiresIn: "1h" }
-//     );
+    // Generate JWT
+    const appToken = jwt.sign(
+      { email: user.email, name: user.name },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
 
-//     res.json({
-//       message: "Manual login successful",
-//       token: appToken,
-//       user: {
-//         name: user.name,
-//         email: user.email,
-//         role: user.role,
-//       },
-//     });
-//   } catch (err) {
-//     console.error("Manual login error:", err);
-//     res.status(500).json({ error: "Login failed" });
-//   }
-// });
+    res.json({
+      message: "Manual login successful",
+      token: appToken,
+      user: {
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
+  } catch (err) {
+    console.error("Manual login error:", err);
+    res.status(500).json({ error: "Login failed" });
+  }
+});
 
 
 

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import { assets } from "../assets/assets";
 
 const Shortlisted = () => {
   const { jobId } = useParams();
@@ -106,7 +107,8 @@ const Shortlisted = () => {
 
         {/* Export Button */}
         <div className="mt-6">
-          <button onClick={exportToExcel} className="border text-sm px-4 py-2 bg-green-500 rounded-lg text-white font-semibold hover:bg-green-600 transition duration-300">
+          <button onClick={exportToExcel} className="border flex gap-2 items-center text-sm px-4 py-2 bg-green-500 rounded-lg text-white font-semibold hover:bg-green-600 transition duration-300">
+            <img src={assets.download} className="w-6 invert" alt="" />
             Export to Sheets
           </button>
         </div>
