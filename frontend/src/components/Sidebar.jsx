@@ -8,7 +8,7 @@ const Sidebar = () => {
     { label: "Job Listings", icons: assets.list, path: "/addjobs" },
     { label: "Resume Screening", icons: assets.ai, path: "/screening" },
     { label: "Ranked Candidates", icons: assets.rank, path: "/prevranking" },
-    { label: "Shortlisted Candidates", icons: assets.rank, path: "/shortlist/:jobId" },
+    { label: "Shortlisted Candidates", icons: assets.shortlist, path: "/shortlist/:jobId" },
   ];
 
   return (

@@ -60,14 +60,14 @@ const PreviousRankings = () => {
           results.map((job, jobIndex) => (
             <div
               key={jobIndex}
-              className="mb-4 bg-white p-4 rounded-md border border-gray-300"
+              className="mb-4 bg-white max-w-[80%]  p-2 rounded-md border border-gray-300"
             >
               {/* Job Header */}
               <div
-                className="flex justify-between items-center cursor-pointer"
+                className="flex font-inter justify-between items-center cursor-pointer"
                 onClick={() => toggleJob(jobIndex)}
               >
-                <h2 className="text-lg font-semibold">{job.jobTitle}</h2>
+                <h2 className=" ">{job.jobTitle}</h2>
                 <button className="text-sm text-blue-500">
                   {openJob === jobIndex ? "Collapse" : "Expand"}
                 </button>

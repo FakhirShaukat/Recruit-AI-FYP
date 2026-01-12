@@ -38,12 +38,14 @@ import plus from './plus.png'
 import up from './up.png'
 import download from './download.png'
 import sheets from './sheets.png'
+import shortlist from './shortlist.png'
 
 
 
 
 
 export const assets = {
+    shortlist,
     sheets,
     download,
     up,
