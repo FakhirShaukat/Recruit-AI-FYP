@@ -1,0 +1,148 @@
+{
+    "Ahmed Salar": {
+        "SKILLS": [
+            "HTML, CSS, JavaScript, React.js, Redux Toolkit, RTK Query, Tailwind CSS, Bootstrap, Material UI,",
+            "Node.js, Express.js, MongoDB, JWT, Mongoose, EJS, REST APIs, MVC, CRUD,",
+            "Git, GitHub, Postman, Chrome",
+            "React.js, Redux Toolkit, Node.js, Express.js, MongoDB, JWT, Tailwind",
+            "Web Development, Data Structures,",
+            "Databases, Software",
+            "React.js, RTK Query, Express.js, MongoDB, JWT,",
+            "EJS, Node.js, Express.js, MongoDB,"
+        ],
+        "EDUCATION": [
+            "JUNE 2024 FEBRUARY 2025",
+            "BACHELOR OF SCIENCE IN Software Engineering",
+            "Iqra University 8 Semester th 2022-- 2026"
+        ],
+        "WORK EXPERIENCE": [],
+        "PROJECT EXPERIENCE": [
+            "E-Commerce Web App MERN",
+            "Built responsive UIs using React.js, Tailwind CSS, Bootstrap, and Material UI Integrated APIs with Axios and RTK Query for efficient data handling Focused on clean, optimized frontend code for better performance and SEO"
+        ]
+    },
+    "Ahmed Raza": {
+        "SKILLS": [
+            "HBL (Habib Bank Limited",
+            "Jul 2021 Sep 2021",
+            "MS Excel, PowerPoint, Power BI, Google Sheets, Canva",
+            "Digital Campaign Planning, Market Research, Branding, Reporting",
+            "Communication, Critical Thinking, Team Collaboration, Time Management"
+        ],
+        "EDUCATION": [
+            "Institute of Business Management (IoBM), Karachi 2022 2024 Master of Business Administration (MBA), Marketing & Analytics",
+            "Iqra University, Karachi 2018 2022 Bachelor of Business Administration (BBA),",
+            "Iqra University,"
+        ],
+        "WORK EXPERIENCE": [
+            "1 year"
+        ],
+        "PROJECT EXPERIENCE": [
+            "Designed brand repositioning plan to target student and young professional segments.",
+            "Presented a digital engagement strategy focusing on university-level partnerships"
+        ]
+    },
+    "Fakhir Shaukat": {
+        "SKILLS": [
+            "HTML, CSS, JavaScript, ASP.NET, SQL Server, Reactjs",
+            "Windows, Mac",
+            "VS Code, PyCharm, Canva, GitHub, MS Word, Excel",
+            "Software Engineering, Web Engineering, Front-End Development, Database"
+        ],
+        "EDUCATION": [
+            "Bachelor s in Software Engineering"
+        ],
+        "WORK EXPERIENCE": [
+            "Intern at Developer s Hub March 2025 - July 2025"
+        ],
+        "PROJECT EXPERIENCE": [
+            "Transformed Figma UI designs into a fully responsive e-commerce website, ensuring consistent user experience across desktop and mobile platforms. Developed a modern web platform using React and Tailwind CSS to connect global investors and entrepreneurs. Focused on performance optimization, accessibility best practices, and clean, maintainable code to deliver a polished user interface. Google Gemini Clone",
+            "Developed a fully responsive AI assistant web app inspired by Google Gemini using ReactJS. Integrated a New Chat feature to allow users to start fresh conversations anytime. Utilized Generative AI API to fetch dynamic responses based on user prompts. E-Commerce Website",
+            "Designed and developed a responsive e-commerce website using HTML, CSS, and JavaScript from scratch. Implemented interactive product listings, navigation, and cart functionality to simulate a real-world shopping experience. Focused on clean UI design, mobile responsiveness, and intuitive user interactions without relying on external libraries or frameworks."
+        ]
+    },
+    "Subhan Khan": {
+        "SKILLS": [
+            "WordPress, Shopify, and Webflow.",
+            "UI/UX",
+            "Front-End Designer & Developer",
+            "Front-End Designer &",
+            "Front-End Design & Development",
+            "HTML, CSS, JavaScript",
+            "Figma, Adobe",
+            "Conversion Rate Optimization (CRO)",
+            "WordPress, Shopify,",
+            "Figma"
+        ],
+        "EDUCATION": [
+            "Bachelor of Software Engineering (Expected",
+            "2025) 2021 Present GOVT COLLEGE FOR MEN Intermediate - Science 2020 2021 RUKAIYA HAJIANI HIGH SCHOOL Matriculation Science 2019"
+        ],
+        "WORK EXPERIENCE": [
+            "Front-End Developer",
+            "Front-End Designer & Developer (Group Project",
+            "5 years of experience"
+        ],
+        "PROJECT EXPERIENCE": [
+            "Developed interactive prototypes to visualize user flows, facilitating stakeholder feedback and design validation.",
+            "Defined color palettes and typography for enhanced readability, aligned with industry standards.",
+            "Designed and implemented a multi-market Shopify store with multi-currency support.",
+            "Customized the store s UX to improve engagement and optimize the sales funnel.",
+            "Conducted A/B testing, leading to a 5% increase in conversion rates.",
+            "Analyzed user data and feedback, refining both UI/UX and Shopify functionalities.",
+            "Monitored KPIs using analytics tools, informing future design strategies.",
+            "Translated Figma designs into a fully functional, responsive Shopify store.",
+            "Enhanced the product filtering system with custom tags, improving search accuracy.",
+            "Developed multiple product pages to improve the store s navigation and structure. Customized cart functionality with Liquid and CSS, enhancing user experience. Integrated third-party apps to extend the functionality and improve performance.",
+            "Designed key pages with Elementor, focusing on a responsive and visually appealing layout.",
+            "Implemented event-related features such as schedules, ticket purchasing, and artist information.",
+            "Conducted usability testing, improving site navigation and user engagement.",
+            "Designed and developed a responsive website for showcasing camera products, using Elementor.",
+            "Created product pages highlighting features, specifications, and customer reviews. Implemented a filtering system for easier navigation through product categories."
+        ]
+    },
+    "Muhammad Ali": {
+        "SKILLS": [
+            "Server, JavaScript, and RESTful",
+            "C , JavaScript, HTML5, CSS3, SQL",
+            "ASP.NET Core 7.0, Entity Framework Core, DevExpress Grid Controls, RESTful APIs, LINQ, MVC Architecture",
+            "SQL Server, MySQL",
+            "jQuery, Bootstrap, Tailwind CSS",
+            "Git, GitHub",
+            "Agile (Scrum, Kanban), CI/CD, Clean Code",
+            "Jan 2020 Dec",
+            "Team Collaboration Problem Solving Communication Time Management"
+        ],
+        "EDUCATION": [
+            "92-312-4567890 muhammad.ali.dev example.com linkedin.com/in/muhammadali-dotnet github.com/muhammadali-dotnet",
+            "Bachelor of Science in Computer Science (BSCS)"
+        ],
+        "WORK EXPERIENCE": [
+            "Core Developer TechBridge Solutions, Karachi Jan 2022",
+            "3 years of experience"
+        ],
+        "PROJECT EXPERIENCE": [
+            "Inventory Management System (.NET Core DevExpress) Built a complete inventory system with CRUD operations, search, and reporting features using .NET Core 7.0 and DevExpress Grid. Employee Tracking System (ASP.NET Core SQL Server) Developed an internal employee management portal with authentication and analytics dashboards."
+        ]
+    },
+    "Arshad Ahmed": {
+        "SKILLS": [
+            "HTML, CSS, JavaScript, MSSQL , ReactJS, Tailwind CSS, Python, MERN",
+            "Windows, Mac",
+            "VS Code, PyCharm, GitHub, Git, MS Word, Excel"
+        ],
+        "EDUCATION": [
+            "Bachelors of Software Engineering Iqra University Specialization in Web Development, Frontend Development, Model Training. FYP on AI-Driven Intelligent Resume Screening & Candidate Shortlisting System . (In Progress)",
+            "Fatimiyah Boys College Computer Science 2020 - 2022",
+            "March 2025 - July 2025"
+        ],
+        "WORK EXPERIENCE": [
+            "1 years of experience"
+        ],
+        "PROJECT EXPERIENCE": [
+            "Collaborated with a cross-functional team to develop a MERN stack web application for job seekers and recruiters. Developed pages for job listings, job details, and application submission workflows. Integrated frontend components with backend APIs to and candidate application features. Participated in code reviews, Git-based version control, and agile development processes. Frontend Developer Intern",
+            "Converted Figma UI designs into a fully responsive e-commerce website, ensuring a consistent and optimized user experience across desktop and mobile devices. Built a MERN stack web platform to connect global investors with entrepreneurs with AI chatbot. Implemented performance optimization techniques, accessibility best practices, and clean, maintainable code to deliver a high-quality user interface.",
+            "Developed a fully responsive AI assistant web app inspired by Google Gemini using ReactJS. Integrated a New Chat feature to allow users to start fresh conversations anytime. Utilized Generative AI API to fetch dynamic responses based on user prompts. Recruit AI - FYP Project ( NLP AI) Developed a fully responsive MERN stack web application. Trained a custom NLP model using SpaCy for extracting key information from resumes. Implemented AI-based matching to assist in candidate shortlisting from job descriptions. Solving modern solutions using latest technology."
+        ]
+    }
+}

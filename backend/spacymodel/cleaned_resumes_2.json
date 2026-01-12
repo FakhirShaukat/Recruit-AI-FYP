@@ -1,0 +1,119 @@
+{
+    "Ahmed Salar": {
+        "Skills": [
+            "HTML, CSS, JavaScript, React.js, Redux Toolkit, RTK Query, Tailwind CSS, Bootstrap, Material UI,",
+            "Node.js, Express.js, MongoDB, JWT, Mongoose, EJS, REST APIs, MVC, CRUD,",
+            "Git, GitHub, Postman, Chrome",
+            "React.js, Redux Toolkit, Node.js, Express.js, MongoDB, JWT, Tailwind",
+            "Web Development, Data Structures,",
+            "Databases, Software",
+            "React.js, RTK Query, Express.js, MongoDB, JWT,",
+            "EJS, Node.js, Express.js, MongoDB,"
+        ],
+        "Education": [
+            "BACHELOR OF SCIENCE IN Software Engineering",
+            "Iqra University 8 Semester th"
+        ],
+        "Experience": [],
+        "Project Experience": [
+            "E-Commerce Web App MERN",
+            "Built responsive UIs using React.js, Tailwind CSS, Bootstrap, and Material UI Integrated APIs with Axios and RTK Query for efficient data handling Focused on clean, optimized frontend code for better performance and SEO"
+        ]
+    },
+    "Fakhir Shaukat": {
+        "Skills": [
+            "HTML, CSS, JavaScript, ASP.NET, SQL Server, Reactjs",
+            "Windows, Mac",
+            "VS Code, PyCharm, Canva, GitHub, MS Word, Excel",
+            "Software Engineering, Web Engineering, Front-End Development, Database"
+        ],
+        "Education": [
+            "Bachelor s in Software Engineering"
+        ],
+        "Experience": [
+            "Intern at Developer s Hub March - July"
+        ],
+        "Project Experience": [
+            "Transformed Figma UI designs into a fully responsive e-commerce website, ensuring consistent user experience across desktop and mobile platforms. Developed a modern web platform using React and Tailwind CSS to connect global investors and entrepreneurs. Focused on performance optimization, accessibility best practices, and clean, maintainable code to deliver a polished user interface. Google Gemini Clone",
+            "Developed a fully responsive AI assistant web app inspired by Google Gemini using ReactJS. Integrated a New Chat feature to allow users to start fresh conversations anytime. Utilized Generative AI API to fetch dynamic responses based on user prompts. E-Commerce Website",
+            "Designed and developed a responsive e-commerce website using HTML, CSS, and JavaScript from scratch. Implemented interactive product listings, navigation, and cart functionality to simulate a real-world shopping experience. Focused on clean UI design, mobile responsiveness, and intuitive user interactions without relying on external libraries or frameworks"
+        ]
+    },
+    "Danish Ahmed": {
+        "Skills": [
+            "Simple Portfolio HTML, CSS, JavaScript",
+            "Sep Nov",
+            "C, Java, Python",
+            "HTML5, CSS3, JavaScript",
+            ".NET, ReactJS, Tailwind CSS",
+            "SQL Server, MySQL",
+            "Object-Oriented Programming (OOP)",
+            "Git, GitHub",
+            "Visual Studio, VS Code, Postman, Canva, MS Word, MS Excel",
+            "Time Management Problem-Solving Communication Team Collaboration",
+            "Designing Development Reading Learning New Technologies"
+        ],
+        "Education": [
+            "Iqra University, Jan Jan (Expected)",
+            "Bachelor of Science in Software Engineering (BSSE) Govt. Degree College Majeed SRE, Intermediate (F.Sc"
+        ],
+        "Experience": [],
+        "Project Experience": []
+    },
+    "John Doe": {
+        "Skills": [
+            "REST APIs, and frontend performance",
+            "React, JavaScript (ES6 ), HTML, CSS, Node.js, Git, REST APIs, UI Design,"
+        ],
+        "Education": [
+            "Bachelor s degree in Computer Science, NED University of Engineering & Technology"
+        ],
+        "Experience": [
+            "Frontend Developer (React Node.js)",
+            "Frontend Developer ABC Software",
+            "1 year"
+        ],
+        "Project Experience": []
+    },
+    "Subhan Khan": {
+        "Skills": [
+            "WordPress, Shopify, and Webflow.",
+            "UI/UX",
+            "Front-End Designer & Developer",
+            "Front-End Designer &",
+            "Front-End Design & Development",
+            "HTML, CSS, JavaScript",
+            "Figma, Adobe",
+            "Conversion Rate Optimization (CRO)",
+            "WordPress, Shopify,",
+            "Figma"
+        ],
+        "Education": [
+            "Bachelor of Software Engineering (Expected",
+            "Present GOVT COLLEGE FOR MEN Intermediate - Science RUKAIYA HAJIANI HIGH SCHOOL Matriculation Science"
+        ],
+        "Experience": [
+            "Front-End Developer",
+            "Front-End Designer & Developer (Group Project",
+            "5 years of experience"
+        ],
+        "Project Experience": [
+            "Developed interactive prototypes to visualize user flows, facilitating stakeholder feedback and design validation",
+            "Designed and implemented a multi-market Shopify store with multi-currency support",
+            "Enhanced the product filtering system with custom tags, improving search accuracy",
+            "Developed multiple product pages to improve the store s navigation and structure. Customized cart functionality with Liquid and CSS, enhancing user experience. Integrated third-party apps to extend the functionality and improve performance",
+            "Designed key pages with Elementor, focusing on a responsive and visually appealing layout",
+            "Implemented event-related features such as schedules, ticket purchasing, and artist information",
+            "Designed and developed a responsive website for showcasing camera products, using Elementor",
+            "Created product pages highlighting features, specifications, and customer reviews. Implemented a filtering system for easier navigation through product categories"
+        ]
+    },
+    "Humera Arshad": {
+        "Skills": [],
+        "Education": [],
+        "Experience": [
+            "3 years experience"
+        ],
+        "Project Experience": []
+    }
+}

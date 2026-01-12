@@ -4,20 +4,24 @@ backend/node_modules/
 frontend/node_modules/
 
 # Large model folder
-backend/spacymodel/
 
 # Specific large model file (optional)
-backend/spacymodel/model-best/transformer/model
+backend/spacymodel/model-best
 
 # Environment files
 .env
 *.env
+
+# Requirements txt
+backend/spacymodel/requirements.txt
 
 # Python cache
 __pycache__/
 
 # Logs
 *.log
+
+backend/uploads/
 
 # Build output
 dist/
